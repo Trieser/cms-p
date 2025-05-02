@@ -1,15 +1,24 @@
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import MainContent from './components/MainContent';
-import React from 'react';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import BrewingLoader from "./components/BrewingLoader";
+import MainContent from "./components/MainContent";
+import { useState } from "react";
 
 const App = () => {
+    const [isLoading, setIsLoading] = useState(true);
+
     return (
-        <div className="min-h-screen flex flex-col bg-gray-50">
-            <Navbar />
-            <MainContent />
-            <Footer />
-        </div>
+        <>
+            {isLoading ? (
+                <BrewingLoader onComplete={() => setIsLoading(false)} />
+            ) : (
+                <>
+                    <Navbar />
+                    <MainContent />
+                    <Footer />
+                </>
+            )}
+        </>
     );
 };
 

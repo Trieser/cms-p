@@ -1,62 +1,62 @@
+/* Tailwind base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Animations */
+
+/* Coffee flow animation for background movement */
 @keyframes coffee-flow {
   0% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
   50% {
-      background-position: 100% 50%;
+    background-position: 100% 50%;
   }
   100% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 }
 
+/* Fade-in animation for smooth appearance */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
+/* Fade-in-up animation for appearing with upward motion */
 @keyframes fadeInUp {
-    from { 
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Float animation for floating coffee beans */
 @keyframes float {
   0%, 100% {
-    transform: 
-      translate3d(0, 0, 0) 
-      rotate(var(--rotate)) 
-      rotate3d(1, 0.2, 0, 20deg);
+    transform: translate3d(0, 0, 0) rotate(var(--rotate)) rotate3d(1, 0.2, 0, 20deg);
   }
   25% {
-    transform: 
-      translate3d(calc(var(--x-movement) * 0.5), -30px, 0) 
-      rotate(calc(var(--rotate) + 5deg)) 
-      rotate3d(1, 0.2, 0, 25deg);
+    transform: translate3d(calc(var(--x-movement) * 0.5), -30px, 0) rotate(calc(var(--rotate) + 5deg)) rotate3d(1, 0.2, 0, 25deg);
   }
   50% {
-    transform: 
-      translate3d(var(--x-movement), -15px, 0) 
-      rotate(calc(var(--rotate) + 10deg)) 
-      rotate3d(1, 0.3, 0, 15deg);
+    transform: translate3d(var(--x-movement), -15px, 0) rotate(calc(var(--rotate) + 10deg)) rotate3d(1, 0.3, 0, 15deg);
   }
   75% {
-    transform: 
-      translate3d(calc(var(--x-movement) * 0.5), -30px, 0) 
-      rotate(calc(var(--rotate) + 5deg)) 
-      rotate3d(1, 0.1, 0, 25deg);
+    transform: translate3d(calc(var(--x-movement) * 0.5), -30px, 0) rotate(calc(var(--rotate) + 5deg)) rotate3d(1, 0.1, 0, 25deg);
   }
 }
 
+/* Jump animation for bouncing coffee beans */
 @keyframes jump {
   0%, 100% {
     transform: translateY(0) rotate(var(--rotate));
@@ -66,6 +66,7 @@
   }
 }
 
+/* Utility classes for animations */
 .animate-fade-in {
   animation: fadeIn 1s ease-out;
 }
@@ -74,11 +75,14 @@
   animation: fadeInUp 1s ease-out;
 }
 
-
+/* Coffee bean animations */
 .coffee-bean.jumping {
   animation: jump 2s ease-in-out infinite, float var(--duration) ease-in-out infinite both;
 }
 
+/* Coffee hero section */
+
+/* Hero section with animated background and centered content */
 .coffee-hero {
   position: relative;
   overflow: hidden;
@@ -92,99 +96,161 @@
   justify-content: center;
   perspective: 1000px;
 }
-  
-  .bean-layer {
-    position: absolute;
-    inset: 0;
+
+/* Layer for coffee beans */
+.bean-layer {
+  position: absolute;
+  inset: 0;
+}
+
+/* Background coffee beans with reduced opacity */
+.bean-background {
+  opacity: 0.6;
+}
+
+/* Coffee bean styles */
+.coffee-bean {
+  position: absolute;
+  width: var(--size);
+  height: calc(var(--size) * 0.6);
+  opacity: var(--opacity);
+  transform: rotate(var(--rotate));
+  z-index: var(--z-index);
+  animation: float var(--duration) ease-in-out infinite both;
+  animation-delay: var(--delay);
+  filter: blur(var(--blur, 0));
+}
+
+/* Coffee bean gradient and shadow */
+.coffee-bean::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #6F4E37 0%, #4B3621 70%, #3D2B1F 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: 
+    1px 1px 3px rgba(0,0,0,0.3),
+    inset 2px 2px 4px rgba(255,255,255,0.1);
+  transform: rotate3d(1, 0.2, 0, 20deg);
+}
+
+/* Coffee bean center line */
+.coffee-bean::after {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(0,0,0,0.5) 20%, 
+    rgba(0,0,0,0.7) 50%, 
+    rgba(0,0,0,0.5) 80%, 
+    transparent 100%);
+  border-radius: 50%;
+  transform: rotate(-5deg);
+}
+
+/* Foreground coffee bean shadow */
+.bean-foreground .coffee-bean::before {
+  box-shadow: 
+    2px 2px 5px rgba(0,0,0,0.4),
+    inset 3px 3px 6px rgba(255,255,255,0.15);
+}
+
+/* Hero content styles */
+
+/* Centered text content in the hero section */
+.hero-content {
+  position: relative;
+  z-index: 100;
+  text-align: center;
+  max-width: 800px;   
+  padding: 2rem;
+}
+
+/* Hero title styles */
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Highlighted text in the hero title */
+.hero-content h1 span {
+  color: #FBBF24;
+}
+
+/* Hero paragraph styles */
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* Hero button styles */
+.hero-content button {
+  background: #D97706;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Hero button hover effect */
+.hero-content button:hover {
+  background: #B45309;
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Brewing Loader */
+
+/* Background color for the loader */
+.bg-amber-50 {
+  background-color: #fef3c7;
+}
+
+/* Empty progress bar background */
+.bg-amber-200 {
+  background-color: #fde68a;
+}
+
+/* Filled progress bar color */
+.bg-amber-800 {
+  background-color: #92400e;
+}
+
+/* Main text color for the loader */
+.text-amber-900 {
+  color: #78350f;
+}
+
+/* Progress text color */
+.text-amber-700 {
+  color: #b45309;
+}
+
+/* Monospace font for progress text */
+.font-mono {
+  font-family: monospace;
+}
+
+
+/* Fade-in-up animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .bean-background {
-    opacity: 0.6;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .coffee-bean {
-    position: absolute;
-    width: var(--size);
-    height: calc(var(--size) * 0.6);
-    opacity: var(--opacity);
-    transform: rotate(var(--rotate));
-    z-index: var(--z-index);
-    animation: float var(--duration) ease-in-out infinite both;
-    animation-delay: var(--delay);
-    filter: blur(var(--blur, 0));
-  }
-  
-  .coffee-bean::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #6F4E37 0%, #4B3621 70%, #3D2B1F 100%);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    box-shadow: 
-      1px 1px 3px rgba(0,0,0,0.3),
-      inset 2px 2px 4px rgba(255,255,255,0.1);
-    transform: rotate3d(1, 0.2, 0, 20deg);
-  }
-  
-  .coffee-bean::after {
-    content: '';
-    position: absolute;
-    top: 30%;
-    left: 20%;
-    right: 20%;
-    height: 1px;
-    background: linear-gradient(to right, 
-      transparent 0%, 
-      rgba(0,0,0,0.5) 20%, 
-      rgba(0,0,0,0.7) 50%, 
-      rgba(0,0,0,0.5) 80%, 
-      transparent 100%);
-    border-radius: 50%;
-    transform: rotate(-5deg);
-  }
-  
-  .bean-foreground .coffee-bean::before {
-    box-shadow: 
-      2px 2px 5px rgba(0,0,0,0.4),
-      inset 3px 3px 6px rgba(255,255,255,0.15);
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 100;
-    text-align: center;
-    max-width: 800px;
-    padding: 2rem;
-  }
-  
-  /* Additional styling for text and buttons */
-  .hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  
-  .hero-content h1 span {
-    color: #FBBF24;
-  }
-  
-  .hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-  }
-  
-  .hero-content button {
-    background: #D97706;
-    color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-  
-  .hero-content button:hover {
-    background: #B45309;
-    transform: scale(1.05);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
