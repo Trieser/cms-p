@@ -1,7 +1,7 @@
 const Navbar = () => {
     return (
         <nav className="bg-white shadow-md">
-            <div className=" mx-auto px-6 py-3">
+            <div className="container mx-auto px-6 py-3">
                 <div className="flex items-center justify-between">
                     <div className="text-2xl font-bold text-gray-800">
                         Testing<span className="text-blue-600">Name</span>
