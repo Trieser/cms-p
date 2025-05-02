@@ -1,3 +1,190 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes coffee-flow {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: 
+      translate3d(0, 0, 0) 
+      rotate(var(--rotate)) 
+      rotate3d(1, 0.2, 0, 20deg);
+  }
+  25% {
+    transform: 
+      translate3d(calc(var(--x-movement) * 0.5), -30px, 0) 
+      rotate(calc(var(--rotate) + 5deg)) 
+      rotate3d(1, 0.2, 0, 25deg);
+  }
+  50% {
+    transform: 
+      translate3d(var(--x-movement), -15px, 0) 
+      rotate(calc(var(--rotate) + 10deg)) 
+      rotate3d(1, 0.3, 0, 15deg);
+  }
+  75% {
+    transform: 
+      translate3d(calc(var(--x-movement) * 0.5), -30px, 0) 
+      rotate(calc(var(--rotate) + 5deg)) 
+      rotate3d(1, 0.1, 0, 25deg);
+  }
+}
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0) rotate(var(--rotate));
+  }
+  50% {
+    transform: translateY(-50px) rotate(calc(var(--rotate) + 10deg));
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out;
+}
+
+
+.coffee-bean.jumping {
+  animation: jump 2s ease-in-out infinite, float var(--duration) ease-in-out infinite both;
+}
+
+.coffee-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(270deg, #6F4E37, #4B3621, #3D2B1F);
+  background-size: 400% 400%;
+  animation: coffee-flow 10s ease infinite;
+  color: white;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+  
+  .bean-layer {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .bean-background {
+    opacity: 0.6;
+  }
+  
+  .coffee-bean {
+    position: absolute;
+    width: var(--size);
+    height: calc(var(--size) * 0.6);
+    opacity: var(--opacity);
+    transform: rotate(var(--rotate));
+    z-index: var(--z-index);
+    animation: float var(--duration) ease-in-out infinite both;
+    animation-delay: var(--delay);
+    filter: blur(var(--blur, 0));
+  }
+  
+  .coffee-bean::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #6F4E37 0%, #4B3621 70%, #3D2B1F 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 
+      1px 1px 3px rgba(0,0,0,0.3),
+      inset 2px 2px 4px rgba(255,255,255,0.1);
+    transform: rotate3d(1, 0.2, 0, 20deg);
+  }
+  
+  .coffee-bean::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: linear-gradient(to right, 
+      transparent 0%, 
+      rgba(0,0,0,0.5) 20%, 
+      rgba(0,0,0,0.7) 50%, 
+      rgba(0,0,0,0.5) 80%, 
+      transparent 100%);
+    border-radius: 50%;
+    transform: rotate(-5deg);
+  }
+  
+  .bean-foreground .coffee-bean::before {
+    box-shadow: 
+      2px 2px 5px rgba(0,0,0,0.4),
+      inset 3px 3px 6px rgba(255,255,255,0.15);
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 100;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  /* Additional styling for text and buttons */
+  .hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content h1 span {
+    color: #FBBF24;
+  }
+  
+  .hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+  
+  .hero-content button {
+    background: #D97706;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .hero-content button:hover {
+    background: #B45309;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
