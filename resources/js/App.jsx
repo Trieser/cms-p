@@ -18,6 +18,11 @@ const App = () => {
                     <Footer />
                 </>
             )}
+            {/* <>
+                <Navbar />
+                <MainContent />
+                <Footer />
+            </> */}
         </>
     );
 };

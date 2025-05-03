@@ -254,3 +254,85 @@
 .animate-fade-in-up {
   animation: fade-in-up 0.8s ease-out forwards;
 }
+
+/* Hero Content Animations */
+.hero-content.animate-in {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.2s;
+}
+
+.hero-content.animate-in .title-line:nth-child(1) span {
+  animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
+.hero-content.animate-in .title-line:nth-child(2) span {
+  animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+.hero-content.animate-in .hero-subtitle {
+  animation: fadeSlideUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+}
+
+.hero-content.animate-in .hero-button {
+  animation: fadeSlideUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
+}
+
+/* Animation Keyframes */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Typography */
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+
+.title-line {
+  height: 1.1em;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+.hero-button {
+  background: linear-gradient(to right, #D97706, #F59E0B);
+  color: white;
+  padding: 1rem 3rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+}
+
+.hero-button:hover {
+  background: linear-gradient(to right, #B45309, #D97706);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 30px rgba(251, 191, 36, 0.5);
+}
