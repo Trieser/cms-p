@@ -9,7 +9,7 @@ const App = () => {
 
     return (
         <>
-            {isLoading ? (
+            {/* {isLoading ? (
                 <BrewingLoader onComplete={() => setIsLoading(false)} />
             ) : (
                 <>
@@ -17,12 +17,12 @@ const App = () => {
                     <MainContent />
                     <Footer />
                 </>
-            )}
-            {/* <>
+            )} */}
+            <>
                 <Navbar />
                 <MainContent />
                 <Footer />
-            </> */}
+            </>
         </>
     );
 };
