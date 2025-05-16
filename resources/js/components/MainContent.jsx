@@ -41,7 +41,7 @@ const MainContent = () => {
                         <div className="md:w-1/2 md:pl-12">
                             <h3 className="text-2xl font-semibold text-gray-800 mb-4">From Bean to Cup</h3>
                             <p className="text-gray-600 mb-4">
-                                We directly partner with local farmers in Sumatra, Java, and Bali to bring you the freshest single-origin beans.
+                                We directly partner with local farmers in Sumatra, Java, and Bali to bring you the freshest single-origin beans. TEST
                             </p>
                             <p className="text-gray-600">
                                 Each batch is hand-roasted in small quantities to ensure perfect flavor development and consistency.
