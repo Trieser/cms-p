@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
-import MainContent from './components/MainContent';
+import Dashboard from './pages/Dashboard/Index';
 
 function App() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -22,7 +22,7 @@ function App() {
                 <Navbar toggleSidebar={toggleSidebar} />
 
                 {/* Main Content */}
-                <MainContent />
+                <Dashboard />
             </div>
         </div>
     );
