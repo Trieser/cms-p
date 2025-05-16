@@ -1,30 +1,36 @@
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import BrewingLoader from "./components/BrewingLoader";
-import MainContent from "./components/MainContent";
-import { useState } from "react";
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom/client';
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
+import MainContent from './components/MainContent';
 
-const App = () => {
-    const [isLoading, setIsLoading] = useState(true);
+function App() {
+    const [sidebarOpen, setSidebarOpen] = useState(true);
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
 
     return (
-        <>
-            {/* {isLoading ? (
-                <BrewingLoader onComplete={() => setIsLoading(false)} />
-            ) : (
-                <>
-                    <Navbar />
-                    <MainContent />
-                    <Footer />
-                </>
-            )} */}
-            <>
-                <Navbar />
+        <div className="flex h-screen bg-gray-100">
+            {/* Sidebar */}
+            <Sidebar isOpen={sidebarOpen} />
+
+            {/* Main Content Area */}
+            <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarOpen ? 'md:ml-64' : 'md:ml-16'}`}>
+                {/* Navbar */}
+                <Navbar toggleSidebar={toggleSidebar} />
+
+                {/* Main Content */}
                 <MainContent />
-                <Footer />
-            </>
-        </>
+            </div>
+        </div>
     );
-};
+}
 
 export default App;
+
+if (document.getElementById('app')) {
+    const root = ReactDOM.createRoot(document.getElementById('app'));
+    root.render(<App />);
+}
