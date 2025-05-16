@@ -14,8 +14,22 @@ class InquiryController extends Controller
      */
     public function index()
     {
-        $inquiries = Inquiry::latest()->paginate(10);
-        return response()->json($inquiries);
+        try {
+            $inquiries = Inquiry::latest()->paginate(10);
+
+            return response()->json([
+                'data' => $inquiries->items(),
+                'meta' => [
+                    'current_page' => $inquiries->currentPage(),
+                    'last_page' => $inquiries->lastPage(),
+                    'per_page' => $inquiries->perPage(),
+                    'total' => $inquiries->total(),
+                ]
+            ]);
+        } catch (\Throwable $e) {
+            \Log::error('InquiryController@index failed: '.$e->getMessage());
+            return response()->json(['message' => 'Server error'], 500);
+        }
     }
 
     /**
