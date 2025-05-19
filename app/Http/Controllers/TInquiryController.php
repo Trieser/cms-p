@@ -15,9 +15,7 @@ class TInquiryController extends Controller
     public function index()
     {
         try {
-            $tInquiries = TInquiry::with(['inquiry' => function($query) {
-                $query->select('id', 'inquiry', 'agent', 'traveling_date', 'pax_counts');
-            }])->latest()->paginate(10);
+            $tInquiries = TInquiry::latest()->paginate(10);
 
             return response()->json([
                 'data' => $tInquiries->items(),
@@ -66,7 +64,7 @@ class TInquiryController extends Controller
     public function show($id)
     {
         try {
-            $tInquiry = TInquiry::with('inquiry')->findOrFail($id);
+            $tInquiry = TInquiry::findOrFail($id);
             return response()->json($tInquiry);
         } catch (\Throwable $e) {
             \Log::error('TInquiryController@show failed: '.$e->getMessage());
