@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             InquirySeeder::class,
+            TInquirySeeder::class,
             // Add other seeders here when you create them
         ]);
     }

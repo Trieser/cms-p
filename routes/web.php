@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\TInquiryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\InquiryController;
 
 Route::get('/{any}', function () {
     return view('index');
-})->where('any', '.*');
+})->where('any', '^(?!api).*$'); 
 
 // Dashboard
 Route::get('/', function () {
@@ -34,3 +35,11 @@ Route::middleware('auth')->controller(InquiryController::class)->group(function 
     Route::delete('/inquiries/{id}', 'destroy')->name('inquiries.destroy');
 });
 
+// TInquiry
+Route::middleware('auth')->controller(TInquiryController::class)->group(function () {
+    Route::get('/t-inquiries', 'index')->name('t-inquiries.index');
+    Route::post('/t-inquiries', 'store')->name('t-inquiries.store');
+    Route::get('/t-inquiries/{id}', 'show')->name('t-inquiries.show');
+    Route::put('/t-inquiries/{id}', 'update')->name('t-inquiries.update');
+    Route::delete('/t-inquiries/{id}', 'destroy')->name('t-inquiries.destroy');
+});

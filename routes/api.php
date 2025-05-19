@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\TInquiryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware([])->group(function () {
     Route::get('/inquiries', [InquiryController::class, 'index']);
+});
+
+Route::controller(TInquiryController::class)->group(function () {
+    Route::get('/t-inquiries', 'index');
+    Route::post('/t-inquiries', 'store');
+    Route::get('/t-inquiries/{id}', 'show');
+    Route::put('/t-inquiries/{id}', 'update');
+    Route::delete('/t-inquiries/{id}', 'destroy');
 });
