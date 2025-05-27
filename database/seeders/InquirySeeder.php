@@ -17,7 +17,7 @@ class InquirySeeder extends Seeder
     public function run(): void
     {
         // Clear existing records to avoid duplicate unique inquiry constraint violations
-        DB::table('inquiries')->truncate();
+        DB::table('inquiries')->delete();
 
         $inquiries = [
             [

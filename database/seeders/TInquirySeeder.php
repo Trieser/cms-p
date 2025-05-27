@@ -16,32 +16,32 @@ class TInquirySeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('t_inquiry')->truncate();
+        DB::table('t_inquiry')->delete();
 
         $t_inquiry = [
             [
-                'inquiry' => '5 days 4 night',
-                'code' => '5D4N',
+                'inquiry_detail' => '5 days 4 night',
+                'inquiry' => '5D4N',
                 'inquiry_id' => 1,
             ],
             [
-                'inquiry' => '4 days 3 night',
-                'code' => '4D3N',
+                'inquiry_detail' => '4 days 3 night',
+                'inquiry' => '4D3N',
                 'inquiry_id' => 2,  
             ],
             [
-                'inquiry' => '7 days 6 night',
-                'code' => '7D6N',
+                'inquiry_detail' => '7 days 6 night',
+                'inquiry' => '7D6N',
                 'inquiry_id' => 3,  
             ],
             [
-                'inquiry' => '3 days 2 night',
-                'code' => '3D2N',
+                'inquiry_detail' => '3 days 2 night',
+                'inquiry' => '3D2N',
                 'inquiry_id' => 4,  
             ],
             [
-                'inquiry' => '10 days 9 night',
-                'code' => '10D9N',
+                'inquiry_detail' => '10 days 9 night',
+                'inquiry' => '10D9N',
                 'inquiry_id' => 5,
             ]
         ];
