@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Dashboard from "./pages/Dashboard/Index";
 import Inquiries from "./pages/Inquiries/Index";
 import TInquiries from "./pages/TInquiry/Index";
+import Template from "./pages/Template/Index";
 
 function App() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -56,6 +57,7 @@ function App() {
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/inquiries" element={<Inquiries />} />
                             <Route path="/t-inquiries" element={<TInquiries />} />
+                            <Route path="/email-template" element={<Template />} />
                             {/* Add more routes as needed */}
                         </Routes>
                     </main>

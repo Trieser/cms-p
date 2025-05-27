@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inquiry;
+use App\Models\EmailTemplate;
+use App\Helpers\TemplateRenderer;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class InquiryController extends Controller
@@ -126,4 +129,6 @@ class InquiryController extends Controller
         $inquiry->delete();
         return response()->json(null, 204);
     }
+
+
 }
