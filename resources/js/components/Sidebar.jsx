@@ -88,6 +88,53 @@ const Sidebar = ({ isOpen }) => (
                 </li>
                 <li>
                     <Link
+                        to="/template-sender"
+                        className="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700"
+                    >
+                        <svg
+                            className="h-5 w-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M16 12H8m0 0l4-4m-4 4l4 4"
+                            ></path>
+                        </svg>
+                        {isOpen && (
+                            <span className="ml-3">Template Sender</span>
+                        )}
+                    </Link>
+                </li>
+
+                <li>
+                    <Link
+                        to="/inquiry-fill/:token"
+                        className="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700"
+                    >
+                        <svg
+                            className="h-5 w-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M12 4v16m8-8H4"
+                            ></path>
+                        </svg>
+                        {isOpen && <span className="ml-3">Form Preview</span>}
+                    </Link>
+                </li>
+                {/* <li>
+                    <Link
                         to="/email-template"
                         className="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700"
                     >
@@ -107,7 +154,7 @@ const Sidebar = ({ isOpen }) => (
                         </svg>
                         {isOpen && <span className="ml-3">Email Template</span>}
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
     </aside>

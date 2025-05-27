@@ -130,5 +130,19 @@ class InquiryController extends Controller
         return response()->json(null, 204);
     }
 
+    public function sendEmail(Request $request)
+    {
+        $validated = $request->validate([
+            'to' => 'required|email',
+            'subject' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
 
+        Mail::raw($validated['content'], function ($message) use ($validated) {
+            $message->to($validated['to'])
+                    ->subject($validated['subject']);
+        });
+
+        return response()->json(['message' => 'Email sent successfully']);
+    }
 }

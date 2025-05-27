@@ -7,6 +7,8 @@ import Dashboard from "./pages/Dashboard/Index";
 import Inquiries from "./pages/Inquiries/Index";
 import TInquiries from "./pages/TInquiry/Index";
 import Template from "./pages/Template/Index";
+import TemplateSender from "./pages/TemplateSender/Index";
+import FormPage from "./pages/Form/Index";
 
 function App() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -58,6 +60,8 @@ function App() {
                             <Route path="/inquiries" element={<Inquiries />} />
                             <Route path="/t-inquiries" element={<TInquiries />} />
                             <Route path="/email-template" element={<Template />} />
+                            <Route path="/template-sender" element={<TemplateSender />} />
+                            <Route path="/inquiry-fill/:token" element={<FormPage />} />
                             {/* Add more routes as needed */}
                         </Routes>
                     </main>
